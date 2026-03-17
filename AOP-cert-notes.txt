@@ -8,8 +8,38 @@ It can be used to retrieve the arguments of the join point (method arguments).
 It must be the first parameter of an advice.
 
 
-What term best corresponds to the following description?
+2. What term best corresponds to the following description?
 
 "It's a point during the execution of a program. It's always a method execution in AOP."
 Ans- JoinPoint
+
+3. Consider the following code snippet:
+@RunWith(SpringRunner.class)
+@ContextConfiguration
+@Transactional
+public class MyTest {
+    @Test
+    public void testA(){
+                //dummy content
+    }
+ 
+    @Test
+    public void testB(){
+        //dummy content
+   }
+}
+Which of the following statements are correct? Please select all that apply. (select 3)
+@Transactional can be placed on top of testA() instead of MyTest and the class logic will be the same. [Wrong]
+Both testA() and testB() will be executed in their own separate transaction. 
+Transactions for all the tests that are executed in the MyTest class will be rolled back.
+We can add @Commit on top of MyTest class to commit the transaction after each test execution.
+
+4.
+
+
+
+
+
+
+
 
