@@ -1,3 +1,7 @@
 1. In the following bean definition method signature, @Bean public BeanA beanB(BeanC beanC), what is the name assigned to the created bean?
 beanB
 
+==
+What happens when we use @Autowired on a final field?
+-It will basically not compile.
+
