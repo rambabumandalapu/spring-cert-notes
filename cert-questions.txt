@@ -138,3 +138,9 @@ securedEnabled Determines if Spring Security's Secured annotation should be enab
 
 prePostEnabled Determines if Spring Security's PreAuthorize, PostAuthorize, PreFilter, PostFilter and RolesAllowed annotations should be enabled. [ WRONG]
 jsr250Enabled Determines if JSR-250 annotations should be enabled. [RIGHT]
+==========
+Which is true about @DataJpaTest ? (select 2)
+@DataJpaTest  loads other components like @Component, @Service, @Controller etc. [WRONG]
+@DataJpaTest annotation configures  In-memory embedded database [RIGHT]
+@DataJpaTest scans and configures Spring Data Repositories [RIGHT]
+DataJpaTest is not transactional by default [WRONG]
