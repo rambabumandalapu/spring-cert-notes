@@ -38,5 +38,8 @@ RssChannelHttpMessageConverter – converts RSS feeds (added only if Rome is pre
 What will happen if you use @Autowired on a beans collection?
 It will instantiate a collection filled with all the beans of the type
 
+@WebMvcTest annotation will auto-configure: (select 3)
+ControllerAdvice + WebMvcConfigurer +MockMvc ( but not TestRestTemplate)
+
 
   
