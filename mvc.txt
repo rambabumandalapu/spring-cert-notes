@@ -16,3 +16,12 @@ ServletRequest [RIGHT]
 Errors[RIGHT]
 ServletResponse[RIGHT]
 Model[RIGHT]
+
+===========
+What is the correct YAML syntax for defining a database connection configuration?
+database:
+  host: localhost
+  port: 5432
+  username: myuser
+  password: mypassword
+=======
