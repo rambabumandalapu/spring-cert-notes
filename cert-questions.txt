@@ -59,4 +59,28 @@ WebMvcConfigurer implemented class
 HandlerMethodArgumentResolver 
 
 
+===
+Identify the correct statements about DispatcherServlet. Choose all that are accurate. (select 2)
+DispatcherServlet employs view resolvers to resolve views. [right]
+DispatcherServlet follows the Front Controller design pattern [right]
+Let's evaluate each statement:
+
+DispatcherServlet delegates incoming requests to Views:
+
+This statement is incorrect. DispatcherServlet is responsible for dispatching incoming requests to the appropriate controllers(, which then handle the request and decide which view to render).
+
+DispatcherServlet employs view resolvers to resolve views:
+
+This statement is correct. DispatcherServlet uses view resolvers to determine the actual views that should render the response for a given request.
+
+DispatcherServlet follows the Front Controller design pattern:
+
+This statement is correct. DispatcherServlet is a key component in the Spring MVC framework and indeed follows the Front Controller design pattern. It centralizes request handling and provides a consistent entry point for processing.
+
+DispatcherServlet requires explicit declaration in web.xml:
+
+This statement is incorrect. In modern Spring applications, especially those using annotation-based configuration, DispatcherServlet can be configured without explicit declaration in the web.xml file. Instead, it is often configured using Java-based configuration or through Spring Boot's auto-configuration
+=========
+
+
   
