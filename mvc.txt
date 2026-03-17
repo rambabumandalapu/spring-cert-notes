@@ -11,3 +11,8 @@ Methods annotated with @RequestMapping are, by default, mapped only to GET reque
 @RequestMapping can be configured to map the annotated method exclusively to a specific HTTP method.
 @RequestMapping can be applied at both class and method levels.
 ===========
+Which of the following options can be employed as arguments for a method mapped to a request in a Controller class, with Spring automatically providing instances? Please select all that apply.   
+ServletRequest [RIGHT]
+Errors[RIGHT]
+ServletResponse[RIGHT]
+Model[RIGHT]
