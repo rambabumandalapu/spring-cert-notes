@@ -3,3 +3,11 @@ Which is true about the workflow of mapping an incoming request to a controller 
 A handler method is a method annotated with @RequestMapping/@GetMapping/@PostMapping/... inside a controller class annotated with @Controller/@RestController). (select 2)
 The DispatcherServlet is the front controller in Spring MVC
 DispatcherServlet uses components of type HandlerAdapter and HandlerMapping
+===========
+Identify the statement that is incorrect regarding the @RequestMapping annotation:
+
+Multiple paths can be specified in the @RequestMapping.
+Methods annotated with @RequestMapping are, by default, mapped only to GET requests. [RIGHT ANSWER]
+@RequestMapping can be configured to map the annotated method exclusively to a specific HTTP method.
+@RequestMapping can be applied at both class and method levels.
+===========
