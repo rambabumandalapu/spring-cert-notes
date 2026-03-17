@@ -6,3 +6,10 @@ We can have only one Joinpoint argument.
 It is supported by all the advice types in Spring AOP. [wrong] because it not supported by arounf advice.
 It can be used to retrieve the arguments of the join point (method arguments).
 It must be the first parameter of an advice.
+
+
+What term best corresponds to the following description?
+
+"It's a point during the execution of a program. It's always a method execution in AOP."
+Ans- JoinPoint
+
