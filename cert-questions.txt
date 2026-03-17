@@ -35,4 +35,8 @@ AtomFeedHttpMessageConverter – converts Atom feeds (added only if Rome is pres
 
 RssChannelHttpMessageConverter – converts RSS feeds (added only if Rome is present on the classpath)
 
+What will happen if you use @Autowired on a beans collection?
+It will instantiate a collection filled with all the beans of the type
+
+
   
