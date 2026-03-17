@@ -1,3 +1,8 @@
 Which of the following is an annotation that can be used to add mocks to a Spring ApplicationContext?
 Ans-  @MockBean
+
+What are the types of AOP advice that can be used to execute code before the advised method? (select 2)
+Around, Before.
+
+
   
