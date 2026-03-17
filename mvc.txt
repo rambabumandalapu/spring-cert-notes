@@ -1,0 +1,5 @@
+Which is true about the workflow of mapping an incoming request to a controller method? Choose two.
+
+A handler method is a method annotated with @RequestMapping/@GetMapping/@PostMapping/... inside a controller class annotated with @Controller/@RestController). (select 2)
+The DispatcherServlet is the front controller in Spring MVC
+DispatcherServlet uses components of type HandlerAdapter and HandlerMapping
