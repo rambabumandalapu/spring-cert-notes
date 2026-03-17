@@ -5,4 +5,12 @@ What are the types of AOP advice that can be used to execute code before the adv
 Around, Before.
 
 
+Which of the following statements accurately describes the behavior of @PreDestroy and @PostConstruct in Spring? Please select all that apply. (select 2)
+Methods annotated with @PostConstruct are invoked after the afterPropertiesSet() method of the InitializingBean interface. [wrong]
+
+Methods annotated with @PreDestroy and @PostConstruct are always invoked, regardless of the bean's scope.[wrong]
+Spring invokes methods annotated with @PreDestroy and @PostConstruct only once per bean instance. [correct]
+Methods annotated with @PreDestroy are invoked before the destroy() method of the DisposableBean interface is called.[correct]
+
+
   
