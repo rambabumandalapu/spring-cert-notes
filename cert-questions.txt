@@ -86,4 +86,9 @@ How can an MVC test be executed on a random port in Spring? (select 2)
 Set the server.port=0 property in the application.properties file of the test resources
 Use the @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) annotation on the test class. This will start the application in a random port.
 ===
+Which exceptions trigger a Spring transaction rollback by default? (select 2)
+Error [right]
+SQLException [wrong]
+all RuntimeException [right]
+========
   
