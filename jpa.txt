@@ -1,0 +1,3 @@
+Is it recommended to utilize JpaTransactionManager when operating with a single database and one Entity Manager?
+true
+======
