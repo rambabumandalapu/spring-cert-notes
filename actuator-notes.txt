@@ -4,6 +4,18 @@ JmsHealthIndicator [ correct]
 ConnectionHealthIndicator
 ApplicationHealthIndicator
 CassandraDriverHealthIndicator [correct]  
+==
+Actuator custom metrics
+
+Custom metrics can be measured using Micrometer classes such as _______?
+
+Choose the right suggestions. (select 4)
+MeterWatch [WRONG]
+Timer
+Counter
+DistributionSummary
+Gauge
+===
 
 
 
