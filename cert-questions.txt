@@ -132,3 +132,9 @@ It allows the specification of a single controller for automatic configuration.
 
 The ApplicationContext created by @WebMvcTest contains only web components (and the related necessary beans)
 =========
+
+Which of these statements about @EnableGlobalMethodSecurity attributes are true? (select 2)
+securedEnabled Determines if Spring Security's Secured annotation should be enabled. [RIGHT]
+
+prePostEnabled Determines if Spring Security's PreAuthorize, PostAuthorize, PreFilter, PostFilter and RolesAllowed annotations should be enabled. [ WRONG]
+jsr250Enabled Determines if JSR-250 annotations should be enabled. [RIGHT]
