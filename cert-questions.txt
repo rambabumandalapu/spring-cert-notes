@@ -40,6 +40,23 @@ It will instantiate a collection filled with all the beans of the type
 
 @WebMvcTest annotation will auto-configure: (select 3)
 ControllerAdvice + WebMvcConfigurer +MockMvc ( but not TestRestTemplate)
+Mock Mvc
+
+@Controller annotated class
+
+@ControllerAdvice annotated class
+
+@JsonComponent annotated class
+
+Converter annotated class
+
+GenericConverter annotated class
+
+Filter annotated class
+
+WebMvcConfigurer implemented class
+
+HandlerMethodArgumentResolver 
 
 
   
