@@ -148,6 +148,10 @@ DataJpaTest is not transactional by default [WRONG]
 ============
 Which options are valid targets for the @Profile annotation in Spring? (select 2)
 Ans = any @Bean method, any class directly or indirectly annotated with @Component.
+==========
+_________ defines class-level metadata that is used to determine how to load and configure an ApplicationContext for integration tests.
+
+@ContextConfiguration
 
 ====
 What is the name of the class or interface in Spring Security that encapsulates high-level user permissions?
