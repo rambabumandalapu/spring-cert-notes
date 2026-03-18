@@ -34,7 +34,10 @@ Both testA() and testB() will be executed in their own separate transaction.
 Transactions for all the tests that are executed in the MyTest class will be rolled back.
 We can add @Commit on top of MyTest class to commit the transaction after each test execution.
 
-4.
+4.What is true about Proxying Mechanisms? 
+If the target object does not implement any interfaces, a CGLIB proxy is created.
+If the target object to be proxied implements at least one interface, a JDK dynamic proxy is used.
+
 
 
 
