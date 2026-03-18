@@ -85,6 +85,14 @@ public void someTest() {
     // Test code here
 }
 ========
+Select two essential components for enabling transaction management in Spring. (select 2)
+
+Add @EnableTransactionManagement to a Java configuration class. [right]
+Annotate a class, an interface, or individual methods requiring a transaction with the @Transactional annotation.[right]
+Develop a Spring AOP advice to establish transactional functionality.[wrong]
+A class must be annotated with @Service and @Transaction.[wrong]
+==========
+
 
 
 
