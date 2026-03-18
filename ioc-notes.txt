@@ -8,5 +8,11 @@ What happens when we use @Autowired on a final field?
 =====
 Which is the right call order for the initialization lifecycle mechanism?
 Ans -- @PostConstruct then afterPropertiesSet() then init()
+=====
+Which is true in the following "Creating your own auto-configuration" statements? (select 2)
+If you want to order certain auto-configurations that shouldn’t have any direct knowledge of each other, you can use @AutoConfigureOrder.
+You can use the @AutoConfigureAfter or @AutoConfigureBefore annotations if your configuration needs to be applied in a specific order.
+==
+
 
 
