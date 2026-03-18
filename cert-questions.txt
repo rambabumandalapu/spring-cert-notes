@@ -157,4 +157,11 @@ _________ defines class-level metadata that is used to determine how to load and
 What is the name of the class or interface in Spring Security that encapsulates high-level user permissions?
 Ans - GrantedAuthority
 ---------
+Which are valid ways to load external properties in Spring? (select 2)
+Using @Value annotation [RIGHT]
+Using @PropertySource annotation [RIGHT]
+Using @Property annotation[WRONG] as it not an annotation.
+Using @Env annotation [WRONG] AS no annotation like name Env
+
+
 
