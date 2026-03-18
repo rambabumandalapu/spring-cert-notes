@@ -7,9 +7,6 @@ What happens when we use @Autowired on a final field?
 
 =====
 Which is the right call order for the initialization lifecycle mechanism?
-Ans --
-What is true about Proxying Mechanisms? 
-If the target object does not implement any interfaces, a CGLIB proxy is created.
-If the target object to be proxied implements at least one interface, a JDK dynamic proxy is used.
+Ans -- @PostConstruct then afterPropertiesSet() then init()
 
 
