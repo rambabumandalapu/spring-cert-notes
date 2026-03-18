@@ -62,3 +62,9 @@ findByLastnameOrderByFirstnameDesc
 
 Note:
 The findTopByOrderByAgeDesc method does not require a filtering property after By. While most finder methods use By followed by a property (like findByLastname), in this case, findTopBy simply means get the first result after applying the OrderBy clause. It’s valid syntax, even without a filtering condition.
+===========
+Which of the following will NOT be auto-configured by Spring Boot automatically if JPA is on the classpath (spring-boot-starter-data-jpa)? Ans - JdbcTemplate
+Wrong ans - JpaTransactionManager, DataSource,EntityManagerFactoryBean
+============
+
+
