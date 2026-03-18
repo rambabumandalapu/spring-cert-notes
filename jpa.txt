@@ -66,5 +66,19 @@ The findTopByOrderByAgeDesc method does not require a filtering property after B
 Which of the following will NOT be auto-configured by Spring Boot automatically if JPA is on the classpath (spring-boot-starter-data-jpa)? Ans - JdbcTemplate
 Wrong ans - JpaTransactionManager, DataSource,EntityManagerFactoryBean
 ============
+Which option below enables the execution of SQL scripts prior to running test methods? (select 2)
+@SqlScript annotation [wrong]
+addScripts method of the ResourceDatabasePopulator class [right]
+@Sql annotation [right]
+runScript  method of the SqlRunner class [wrong]
+
+
+
+
+
+
+
+
+
 
 
