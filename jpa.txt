@@ -1,3 +1,64 @@
 Is it recommended to utilize JpaTransactionManager when operating with a single database and one Entity Manager?
 true
 ======
+Overall explanation
+
+
+limit – result of the query can be limited by usage of first/top keyword
+
+findFirst10ByLastname
+
+findFirstByOrderByLastnameAsc
+
+findTop3ByLastname
+
+findTopByOrderByAgeDesc
+
+property/properties expression – result will be filtered based on property of entity, multiple properties can be used with usage of And, Or keyword
+
+findByLastnameAndFirstname
+
+findByLastnameOrFirstname
+
+findByFirstname
+
+comparison – comparison mode can be specified after specifying property used for filtering
+
+findByFirstnameIs
+
+findByFirstnameEquals
+
+findByStartDateBetween
+
+findByAgeLessThan, findByAgeLessThanEqual
+
+findByAgeGreaterThan, findByAgeGreaterThanEqual
+
+findByStartDateBefore, findByStartDateAfter
+
+findByAgeIsNull, findByAgeIsNotNull
+
+findByFirstnameLike, findByFirstnameNotLike
+
+findByFirstnameStartingWith, findByFirstnameEndingWith
+
+findByFirstnameContaining
+
+findByLastnameNot
+
+findByAgeIn(Collection ages), findByAgeNotIn(Collection ages)
+
+findByActiveTrue, findByActiveFalse
+
+findByFirstnameIgnoreCase
+
+ordering operator – optionally you can specify ordering operator at the end of method name
+
+findByLastnameOrderByFirstnameAsc
+
+findByLastnameOrderByFirstnameDesc
+
+
+
+Note:
+The findTopByOrderByAgeDesc method does not require a filtering property after By. While most finder methods use By followed by a property (like findByLastname), in this case, findTopBy simply means get the first result after applying the OrderBy clause. It’s valid syntax, even without a filtering condition.
