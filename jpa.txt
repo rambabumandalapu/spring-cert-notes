@@ -71,7 +71,20 @@ Which option below enables the execution of SQL scripts prior to running test me
 addScripts method of the ResourceDatabasePopulator class [right]
 @Sql annotation [right]
 runScript  method of the SqlRunner class [wrong]
+In spring boot console application test:
 
+ResourceDatabasePopulator rdp = new ResourceDatabasePopulator();
+ rdp.addScript(new ClassPathResource("sql/create-tables.sql"));
+ rdp.execute(dataSource);
+Here’s an example of how you might use the @Sql annotation:
+
+@Test
+@Sql(scripts = "schema.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = "data.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+public void someTest() {
+    // Test code here
+}
+========
 
 
 
