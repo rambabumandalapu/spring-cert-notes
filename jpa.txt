@@ -124,6 +124,25 @@ his statement is incorrect. The @Sql annotation is used to execute SQL statement
 This statement is incorrect. The @SqlMergeMode annotation is used to specify how @Sql annotations should be combined when used at the class and method levels, and it does not have a boolean attribute.
 ========
 
+6. Which two statements are true regarding storing user details in Spring Security?
+
+Explanation:
+
+User details can be stored in custom storage and retrieve them by implementing UserDetailsService interface:
+This statement is correct. The UserDetailsService interface is used in Spring Security to load user-specific data. It can be implemented to retrieve user details from any custom storage, such as a database or a web service.
+
+The user details includes username and password but not authorities:
+This statement is incorrect. The UserDetails interface in Spring Security includes not only the username and password but also the authorities (permissions) granted to the user.
+
+With a custom UserDetailsService defined in the ApplicationContext, Spring Boot still creates the default user:
+This statement is incorrect. If a custom UserDetailsService is defined, Spring Boot will not create the default user. The custom UserDetailsService will be used to load user details.
+
+Passwords must be hashed and the default hashing algorithm is MD5:
+This statement is incorrect. While passwords should be hashed, MD5 is not recommended due to security vulnerabilities. Spring Security recommends using stronger hashing algorithms like BCrypt.
+
+User details can be stored in a database, in LDAP, or in memory:
+This statement is correct. Spring Security supports storing user details in various storage mechanisms, including databases, LDAP directories, and in-memory storage
+
 
 
 
