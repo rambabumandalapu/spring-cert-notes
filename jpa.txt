@@ -105,7 +105,154 @@ jdbcTemplate.execute("UPDATE orders SET status='Delivered' where id=4564891")
 Ans- void
 `Note that other overloaded methods of execute could return beans, such as those with callbacks like
 
-execute(String callString, CallableStatementCallback<T> action)
+execute(String callString, CallableStatementCallback<T> action
+---
+4. Which two annotations indicate that the translation for a transactional test method should be committed after the test method has completed?
+Skip to Main Content
+Spring Certification
+Become a Spring Professional
+Course
+
+Example questions
+Exam
+
+Blog
+Contact
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. Which two annotations indicate that the translation for a transactional test method should be committed after the test method has completed?
+
+
+
+
+
+
+
+Next
+Explanation:
+
+@Transactional(commit=true):
+This statement is incorrect. There is no commit attribute in the @Transactional annotation. The correct way to indicate that a transaction should be committed after a test method is with the @Commit annotation.
+
+@Commit:
+This statement is correct. The @Commit annotation can be used to indicate that the transaction for a test method should be committed after the test method has completed.
+
+@Rollback(false):
+This statement is correct. The @Rollback annotation with the value false can be used to override the default rollback behavior and commit the transaction after a test method has completed.
+
+@Sql(alwaysCommit=true):
+his statement is incorrect. The @Sql annotation is used to execute SQL statements against a database, and it does not have an alwaysCommit attribute.
+
+@SqlMergeMode(false):
+This statement is incorrect. The @SqlMergeMode annotation is used to specify how @Sql annotations should be combined when used at the class and method levels, and it does not have a boolean attribute.
+========
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
