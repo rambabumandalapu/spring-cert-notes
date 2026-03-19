@@ -97,6 +97,15 @@ READ_UNCOMMITTED, REPEATABLE_READ,SERIALIZABLE[RIGHT],READ_COMMITTED
 ==================
 At which isolation level can non-repeatable reads occur? (select 2)
 READ_UNCOMMITTED [RIGHT], REPEATABLE_READ,SERIALIZABLE,READ_COMMITTED[RIGHT]
+========
+What is the return type of JdbcTemplate.execute() method?
+
+for the following use :
+jdbcTemplate.execute("UPDATE orders SET status='Delivered' where id=4564891")
+Ans- void
+`Note that other overloaded methods of execute could return beans, such as those with callbacks like
+
+execute(String callString, CallableStatementCallback<T> action)
 
 
 
