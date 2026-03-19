@@ -92,6 +92,8 @@ Annotate a class, an interface, or individual methods requiring a transaction wi
 Develop a Spring AOP advice to establish transactional functionality.[wrong]
 A class must be annotated with @Service and @Transaction.[wrong]
 ==========
+Which of the following database system isolation levels prevent phantom reads?
+READ_UNCOMMITTED, REPEATABLE_READ,SERIALIZABLE,READ_COMMITTED
 
 
 
