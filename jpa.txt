@@ -93,7 +93,7 @@ Develop a Spring AOP advice to establish transactional functionality.[wrong]
 A class must be annotated with @Service and @Transaction.[wrong]
 ==========
 Which of the following database system isolation levels prevent phantom reads?
-READ_UNCOMMITTED, REPEATABLE_READ,SERIALIZABLE,READ_COMMITTED
+READ_UNCOMMITTED, REPEATABLE_READ,SERIALIZABLE[RIGHT],READ_COMMITTED
 ==================
 At which isolation level can non-repeatable reads occur? (select 2)
 READ_UNCOMMITTED, REPEATABLE_READ,SERIALIZABLE,READ_COMMITTED
