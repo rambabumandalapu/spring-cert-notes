@@ -117,6 +117,16 @@ Lets the application be gracefully shutdown.
 threaddump
 
 Performs a thread dump.
+====
+Which is true in the following Spring configuration statements? (select 2)
+@Bean methods can be marked as private
+@Bean methods must not be marked as final.
+@Bean methods can be marked as static.
+@Configuration classes can be final.
+===========
+Which Spring bean scope is described as "Scopes a single bean definition to the lifecycle of a ServletContext. Only valid in the context of a web-aware Spring ApplicationContext."?
+Singleton/request/session/application
+
 
 
 
