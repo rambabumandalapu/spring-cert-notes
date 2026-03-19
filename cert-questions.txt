@@ -162,6 +162,14 @@ Using @Value annotation [RIGHT]
 Using @PropertySource annotation [RIGHT]
 Using @Property annotation[WRONG] as it not an annotation.
 Using @Env annotation [WRONG] AS no annotation like name Env
+-------------
+Which of the following annotations can use SpEL? (select 3)
+
+@RolesAllowed [wrong]
+@Prefilter
+@PreAuthorize
+@PostAuthrize
+========
 
 
 
