@@ -126,6 +126,34 @@ Which is true in the following Spring configuration statements? (select 2)
 ===========
 Which Spring bean scope is described as "Scopes a single bean definition to the lifecycle of a ServletContext. Only valid in the context of a web-aware Spring ApplicationContext."?
 Singleton/request/session/application
+=========
+Which of the following should not be used to close an application context?
+Use AbstractApplicationContext destroy() method in Spring 5 [right]
+Use the registerShutdownHook method [wrong]
+Use AbstractApplicationContext  close() method [wrong]
+Overall explanation
+destroy
+
+@Deprecated
+public void destroy()
+Deprecated. as of Spring Framework 5.0, in favor of close()
+
+close
+
+public void close()
+
+Close this application context, destroying all beans in its bean factory.
+
+Delegates to doClose() for the actual closing procedure. Also removes a JVM shutdown hook, if registered, as it's not needed anymore.
+
+registerShutdownHook
+
+public void registerShutdownHook()
+
+Register a shutdown hook named SpringContextShutdownHook with the JVM runtime, closing this context on JVM shutdown unless it has already been closed at that time.
+
+Delegates to doClose() for the actual closing procedure.
+============
 
 
 
