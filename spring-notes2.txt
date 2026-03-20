@@ -1,0 +1,1238 @@
+---
+
+**Question 1**
+
+Given the following Spring configuration file, what is the correct answer:
+
+```xml
+<bean class="com.spring.service.MyServiceImpl">
+    <property name="repository" ref="jpaDao"/>
+</bean>
+
+<bean class="com.spring.repository.JpaDao"/>
+```
+
+1. The first declared bean MyServiceImpl is missing an id must be named myService
+2. The second declared bean JpaDao is missing an id must be named jpaDao
+3. Answers 1 and 2 are both rights
+4. Answers 1 and 2 are both wrong
+
+---ANS 2
+
+**Question 2**
+
+Given the Spring configuration file, which are the correct statements?
+
+```xml
+<bean class="com.spring.service.BankServiceImpl"
+      p:bankName="NationalBank">
+</bean>
+```
+
+1. The p namespace has to be declared
+2. Bean id is bankServiceImpl
+3. The BankServiceImpl references a NationalBank bean
+4. NationalBank is a scalar value
+
+---ANS- 1 AND 4
+
+Here is the extracted text from the image:
+
+---
+
+**Question 3**
+
+What the name of the bean defined in the following configuration class? Select a single answer.
+
+```java
+@Configuration
+public class ApplicationConfig {
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Bean
+    ClientRepository clientRepository() {
+        ClientRepository accountRepository = new JpaClientRepository();
+        accountRepository.setDataSource(dataSource);
+        return accountRepository;
+    }
+}
+```
+
+1. JpaClientRepository
+2. jpaClientRepository
+3. clientRepository  [RIGHT ANSWER]
+4. Two beans are defined: a data souce and a repository
+Here’s the extracted text along with the correct answers and explanations:
+
+---
+
+## **Question 4**
+
+
+
+How could you externalize constants from a Spring configuration file or a Spring annotation into a `.properties` file? Select one or more answers
+
+1. By using the `<util:constant />` tag
+2. By declaring the `ConstantPlaceholderConfigurer` bean post processor
+3. By using the `<context:property-placeholder />` tag
+4. By using the `c:` namespace
+
+---
+
+### ✅ **Correct Answer: 3**
+
+### ✔ Explanation:
+
+* **1 ❌ (`<util:constant />`)** → Used for referencing static constants, not externalizing to properties files
+* **2 ❌ (`ConstantPlaceholderConfigurer`)** → Not a valid Spring class (correct one is `PropertyPlaceholderConfigurer`)
+* **3 ✔ (`<context:property-placeholder />`)** → This is the correct and standard way to load `.properties` values
+* **4 ❌ (`c:` namespace)** → Used for constructor injection shorthand, unrelated
+
+👉 **Final Answer: 3**
+
+---
+
+## **Question 5**
+
+What statement is not correct in live environment? Select a unique answer.
+
+1. Constructor and properties autowiring in the same bean are not compatible
+2. A bean should have a default or a no-args constructor
+3. The `<constructor-arg>` tag could take type, name and index to reduce ambiguity
+
+---
+
+### ✅ **Correct Answer: 2**
+
+### ✔ Explanation:
+
+* **1 ✔ (Correct statement)**
+  Mixing constructor and setter injection can lead to ambiguity → generally discouraged
+
+* **2 ❌ (Incorrect statement → this is the answer)**
+  A bean **does NOT need a no-args constructor** if constructor injection is used
+
+* **3 ✔ (Correct statement)**
+  `<constructor-arg>` supports `type`, `name`, and `index` to resolve ambiguity
+
+👉 **Final Answer: 2**
+
+---
+
+## **Question 6**
+
+
+What are the right affirmations about the `@PostConstruct`, `@Resource` and the `@PreDestroy` annotations?
+
+1. Those annotations are specified in the JSR-250
+2. The Spring Framework embedded those annotations
+3. The `<context:component-scan>` tag enable them
+4. The `<context:annotation-config>` tag enable them
+5. Declaring the `CommonAnnotationBeanPostProcessor` enable them
+
+---
+
+### ✅ **Correct Answers: 1, 4, 5**
+
+### ✔ Explanation:
+
+* **1 ✔** → These annotations come from **JSR-250 (javax.annotation / jakarta.annotation)**
+* **2 ❌** → They are not originally from Spring; Spring only supports them
+* **3 ❌** → `<context:component-scan>` scans beans but does not directly enable these annotations
+* **4 ✔** → `<context:annotation-config>` registers required post-processors
+* **5 ✔** → `CommonAnnotationBeanPostProcessor` specifically enables these annotations
+
+👉 **Final Answer: 1, 4, 5** and/but 3 also is right answer .
+
+---
+
+## **Question 7**
+
+
+
+What is/are typically case(s) where you usually need to manually instantiate an `ApplicationContext`?
+
+1. In a web application
+2. In an integration test running with the SpringJUnit4ClassRunner
+3. In a standalone application started with a main method
+4. None of the above
+
+---
+
+### ✅ **Correct Answer: 3**
+
+### ✔ Explanation:
+
+* **1 ❌** → In web apps, Spring (via container like Tomcat) initializes context automatically
+* **2 ❌** → Spring Test framework creates the context for you
+* **3 ✔** → In a standalone Java app (`main` method), you must manually create `ApplicationContext`
+* **4 ❌** → Incorrect
+
+👉 **Final Answer: 3**
+
+---
+
+Here’s the extracted text along with the correct answer and explanation:
+
+---
+
+## **Question 8**
+
+Select the right statement about referring a Spring configuration file inside the package `com.example.myapp` in the below example?
+
+```java
+ApplicationContext context = new 
+ClassPathXmlApplicationContext("classpath:/com.example.myapp.config.xml");
+```
+
+1. The classpath prefix could be omitted
+2. Package name using the dot character is not well formatted
+3. The slash character preceding com.example could be omit
+4. All of the above
+5. None of the above
+
+---
+
+## ✅ **Correct Answer: 4 (All of the above)**
+
+---
+
+## ✔ Explanation:
+
+### **1 ✔** The `classpath:` prefix could be omitted
+
+* `ClassPathXmlApplicationContext` already assumes classpath
+* So this works:
+
+  ```java
+  new ClassPathXmlApplicationContext("com/example/myapp/config.xml");
+  ```
+
+---
+
+### **2 ✔** Package name using dot (`.`) is not well formatted
+
+* File paths in classpath must use `/`, not `.`
+* Correct format:
+
+  ```
+  com/example/myapp/config.xml
+  ```
+* So:
+
+  ```
+  com.example.myapp.config.xml ❌
+  ```
+
+---
+
+### **3 ✔** Leading `/` can be omitted
+
+* Both are valid:
+
+  ```
+  classpath:/com/example/myapp/config.xml
+  classpath:com/example/myapp/config.xml
+  ```
+-----
+Here is the extracted text from the image:
+
+---
+
+**Question 9**
+
+How to auto-inject into a field a Spring bean by its name? Select one or more answer choices.
+
+1. With the name attribute of the `@Autowired` annotation
+2. By using the single `@Qualifier` annotation
+3. ✅ By using both the `@Autowired` and the `@Qualifier` Spring annotations
+4. ✅ By using the `@Autowired` annotation and naming the field with the bean name
+Answers number 3 and 4 are valid.  
+
+---
+
+**Question 10**
+
+What are the main advantages of using interfaces when designing business services? Select one or more answer choices.
+
+1.  ✅Mocking or stubbing the service
+2. Be able to use the Spring auto-injection
+3. Can do dependency checking
+4.  ✅Loosely coupled
+Answers number 1 and 4 are valid.  
+
+---
+
+**Question 11**
+
+Select one or many correct answers about Spring bean life cycle.
+
+1. The method annotated with `@PostConstruct` is called after bean instantiation and before properties setting of the bean
+2. The method `@PreDestroy` of a prototype bean is called when the bean is garbage collected
+3. The `init()` method declared in the `init-method` attribute of a bean is called before the `afterPropertiesSet` callback method of the `InitializingBean` interface
+4.  ✅The method annotated with `@PostConstruct` is called before the `afterPropertiesSet` callback method of the `InitializingBean` interface
+Correct answers: 4  
+---
+
+**Question 12**
+
+Given the following configuration class, what are the correct affirmations? Select one or more answers.
+
+```java
+public class ApplicationConfig {
+
+    private DataSource dataSource;
+
+    @Autowired
+    public ApplicationConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    @Bean(name="clientRepository")
+    ClientRepository jpaClientRepository() {
+        return new JpaClientRepository();
+    }
+
+}
+```
+
+1. ✅ @Configuration annotation is missing
+2.  ✅Default or no-arg constructor is missing
+3. @Bean name is ambiguous
+4. @Bean scope is prototype
+
+---
+
+**Question 13**
+
+What are the features of the XML `<context:namespace>`? Select one or many answers.
+
+1. @Transactional annotation scanning
+2. @Aspect annotation detection enabling
+3. ✅ @Autowired annotation enabling
+4. ✅@Component annotation scanning
+
+---
+
+**Test**
+
+**Question 14**
+
+Select one or more correct statements about developing integration test with Spring support.
+
+1. A new Spring context is created for each test class
+2. To get a reference on the bean you want to test, you have to call the getBean() method of the Spring context
+3. Spring context configuration could be inherited from the super class
+4. The Spring context configuration file has to be provided to the @ContextConfiguration annotation
+The only correct answer is number 3.  
+
+1. The Spring context is cached across tests unless you use the @DirtiesContext annotation  
+2. With the Spring test module, dependency injection is available in test case. So you may autowired the bean you are testing.  
+3. By default, a @ContextConfiguration annotated class inherits the Spring context configuration file locations defined by an annotated superclass. The inheritLocations of this attribute allows to change this default behavior.  
+4. If no context configuration file is provided to the @ContextConfiguration annotation, Spring uses a file convention naming. It tries to load a file named with the test class name and suffices by "-context.xml" (i.e. MyDaoTest-context.xml)  
+
+---
+
+**Question 15**
+
+What are the main advantage(s) for using Spring when writing integration tests?
+
+1. Reuse Spring configuration files of the application
+2. Create mock or stub
+3. Be able to use the rollback after the test pattern
+4. Use dependency injection
+Correct answers are 1, 3 and 4.  
+
+What are the main advantage(s) for using Spring when writing integration tests?  
+
+1. More than testing multiple classes together, integration test may allow to test your spring configuration file and/or to reuse it.
+2. Mocking or stubbing is more frequent in unit tests than in integration tests. And Spring does not provide any implementation or abstraction of mock framework.  
+3. The framework may create and roll back a transaction for each test method. Default rollback policy could be changed by using the @TransactionConfiguration annotation. And default mode could be overridden by the @Rollback annotation.  
+4. DependencyInjectionTestExecutionListener provides support for dependency injection and initialization of test instances.  
+---
+**Question 16**
+
+What are the main advantage(s) for using Spring when writing unit tests?
+
+1. Reuse Spring configuration files of the application
+2. Use dependency injection
+3. Provide some mocks for servlet classes
+4. All of the above
+5. None of the above
+The correct answer is the number 3.  
+
+1. You don’t need Spring container to write unit test  
+2. Refer to the answer number 1.  
+3. The org.springframework.mock package provides mock classes like MockHttpSession or MockHttpContext. They could be helpful for unit test in the presentation layer and when you don’t use any mock framework such as Mockito or EasyMock.
+
+---
+**Question 17**
+What is right about the Spring test module?
+
+1. It provides an abstraction layer for the main open source mock frameworks
+2. Provides the @Mock annotation
+3. It dynamically generates mock objects
+4. All of the above
+5. None of the above
+
+Answer 5 is correct.  
+
+What is right about the spring test module?  
+
+1. The spring test module does not provide an abstraction layer for open source mock frameworks like EasyMock, JMock or Mockito  
+2. The @Mock annotations comes from the Mockito framework  
+3. The spring test module does not provide mechanism to generate mock objects at runtime  
+
+
+**Question 18**
+
+Select correct statement(s) about transactional support of the Spring test module.
+
+1. Transaction manager could be set within the @TransactionConfiguration annotation
+2. Method annotated with @Before is executed outside of the test’s transaction
+3. Spring test may rollback the transaction of a service configured with the REQUIRES_NEW propagation
+4. The transaction of a method annotated with the @Rollback annotation with its default values is rolled back after the method has completed
+Correct statements are number 1 and 4.  
+
+1. The transactionManager property of the @TransactionConfiguration annotation enables to set the bean name of the PlatformTransactionManager that is to be used to drive transactions.  
+2. Method annotated with @Before is executed inside the test’s transaction. You have to use the @BeforeTransaction to execute code outside the test’s transaction.  
+3. The REQUIRES_NEW propagation suspends the current test’s transaction then creates a new transaction that will be used to execute the service. A commit at the service level could not be changed by the test.  
+4. The transaction for the annotated method should be rolled back after the method has completed.  
+
+---
+Question 19
+
+Considering 2 classes AccountServiceImpl and ClientServiceImpl. Any of these 2 classes inherits from each other. What is the result of the following pointcut expression?
+
+execution(* *..AccountServiceImpl.update(..))
+&&
+execution(* *..ClientServiceImpl.update(..))
+
+1. Matches public update methods of the 2 classes, whatever the arguments
+
+2. Matches any update methods of the 2 classes, whatever the arguments and method visibility
+
+3. Matches any update methods of the 2 classes, with one or more arguments and whatever method visibility
+
+4. No joint point is defined
+
+Pointcut expression could not satisfied both first and second execution point. Do not confuse the && operator and || operator.
+
+---
+Question 20
+Using the Spring AOP framework, what is the visibility of the method matches by the following join point?
+
+@Pointcut("execution(* *(..))") private void anyOperation() {};
+
+1. All methods, whereas their visibility
+2. All methods, except private method
+3. Protected and public methods
+4. ✅Public methods
+Correct answer is the number 4.  
+
+Due to the proxy-based nature of Spring's AOP framework, protected methods are by definition not intercepted, neither for JDK proxies nor for CGLIB proxies. As a consequence, any given pointcut will be matched against public methods only!  
+
+To intercept private and protected methods, AspectJ weaving should be used instead of the Spring’s proxy-based AOP framework.  
+
+---
+
+Question 21
+What are the 2 correct statements about AOP proxy?
+
+1.  ✅AOP proxies are created by Spring in order to implement the aspect contracts
+2. AOP proxies are always created with a JDK dynamic proxy
+3. Only classes that implements a least one interface could be proxied
+4. All methods could be proxied
+5.  ✅Proxies are created by a BeanPostProcessor
+The 2 correct statements are 1 and 5.  
+
+
+1.If the target object implements one or more interfaces, Spring will create a JDK dynamic proxy that implements those interfaces. If the target object does not implement any interfaces, Spring will instead create a CGLIB subclass proxy.2. If the target object does not implement any interfaces, then a CGLIB proxy will be created.  
+3. If the target object is a CGLIB proxy, final methods cannot be advised.  
+4. When CGLIB proxy is used, final methods cannot be overridden.  
+5. AOP Proxies are created by the AbstractAutoProxyCreator#postProcessAfterInitialization method.  
+
+---
+
+Question 22
+What is an after throwing advice? Select a unique answer.
+
+1. Advice that could throw an exception
+2.  ✅Advice to be executed if a method exits by throwing an exception
+3. Advice that executes before a join point
+4. Spring does not provide this type of advice
+---
+Question 23
+What is an after Returning advice? Select a unique answer
+1. Advice to be executed regardless of the means by which a join point exits  
+2. Advice that surrounds a method invocation and can perform custom behavior before and after the method invocation  
+3. Advice to be executed before method invocation  
+4. ✅Advice to be executed after a join point completes without throwing an exception  
+
+
+//
+Example: error logging, alerting.
+
+⚖️ Sequential Flow Visualization
+Let’s imagine a method call with all advice types applied:
+
+@Before → executes first.
+
+@Around (before part) → executes next.
+
+Target method executes.
+
+If method returns normally:
+
+@AfterReturning executes.
+
+@After executes.
+
+@Around (after part) executes.
+
+If method throws exception:
+
+@AfterThrowing executes.
+
+@After executes.
+
+@Around (after part) executes.
+
+🔎 Flow Diagram (Textual)
+Code
+@Before
+   ↓
+@Around (before)
+   ↓
+Target Method
+   ├── Normal return → @AfterReturning → @After → @Around (after)
+   └── Exception     → @AfterThrowing → @After → @Around (after)
+🎯 Key Takeaway
+Before always runs first.
+
+Around wraps everything.
+
+AfterReturning runs only on success.
+
+AfterThrowing runs only on failure.
+
+After always runs at the end (like finally).
+//
+Question 24  
+What is an advice? Select a unique answer.  
+1. An action taken by an aspect at a particular join point  
+2. A point during the execution of a program  
+3. An aspect and a pointcut  
+4. A predicate that matches join points  
+
+Question 25  
+What is a pointcut? Select the single answer.  
+1. Code to execute at a join point  
+2.  ✅An expression to identify join points  
+3. An advice and a join point  
+4. None of the above
+----
+Question 26  
+Select method’s signatures that match with the following pointcut:  
+execution(* com.test.service.*.*.*(*))  
+1. void com.test.service.MyServiceImpl#transfer(Money amount)  
+2. void com.test.service.MyServiceImpl#transfer(Account account, Money amount)  
+3. void com.test.service.account.MyServiceImpl#transfer(Money amount)  
+4. void com.test.service.account.MyServiceImpl#transfer(Account account, Money amount)  
+5. None of the above  
+
+Correct answers: 1, 3  
+execution(* com.test.service..*.*(*))  
+1. True  
+2. The pattern (*) matches a parameter of any type  
+3. The method taking one com.test.service.account sub-package matches the pointcut same reason as answer number 2.  
+4. False for the same reason as answer number 2.  
+
+-----
+Question 27  
+What are the unique right answer about Spring AOP support?  
+1. An advice could proxied a constructor’s class  
+2.  ✅A pointcut could select methods that have a custom annotation  
+3. Static initialization code could be targeted by a point cut  
+4. Combination of pointcuts by &&, || and the ! operators is not supported
+
+Correct answers: 2
+
+1. Interception of constructors requires the use of Spring-driven native AspectJ weaving instead of Spring's proxy-based AOP framework  
+2. The @annotation designator enables to select methods that are annotated by a given annotation  
+3. The static initialization AspectJ designator is not supported by Spring AOP  
+4. Pointcut expressions can be combined using &&, || and !  
+
+---
+Question 28  
+Using the Spring AOP framework, what are the joinpoint methods of the following pointcut expressions?  
+execution(public * *(..))  
+1.  ✅The execution of all public method  
+2. The execution of all public method returning a value  
+3. The execution of all public method having at least one parameter  
+4. The execution of all public method in class belonging to the default java package  
+
+Data Access  
+
+Question 29  
+Why is it a best practice to mark transaction as read-only when code does not write anything to the database?  
+Select one or more answers.  
+1. It is mandatory for using Spring exception translation mechanism  
+2.  ✅May be improve performance when using Hibernate  
+3. Spring optimizes its transaction interceptor  
+4. ✅Provides safeguards with Oracle and some other databases  
+
+Correct answers: 2, 4  
+1. Spring exception translation mechanism has nothing to do with read-only transaction  
+2. Read-only transaction prevents Hibernate from flushing its session. Hibernate does not apply dirty checking during it
+3. No  
+4. When JDBC transaction is marked as read-only, Oracle only accepts SELECT SQL statements.  
+
+----
+
+Question 30  
+What data access technology is supported by the Spring framework?  
+Select one or more answers.  
+1. ✅ JDBC  
+2. NoSQL
+3. ✅Hibernate
+4. ✅JPA
+
+Question
+Correct answers: 1, 3, 4  
+1. JDBC is supported: JdbcTemplate, JDBCException wrapper ...  
+2. Some NoSQL databases are supported through the Spring Data project  
+3. Hibernate is supported: HibernateTemplate, AnnotationSessionFactoryBean ...  
+4. JPA is supported: LocalEntityManagerFactoryBean, @PersistenceContext annotation support  
+
+---
+Question 31  
+What is not provided by the JdbcTemplate? Select a unique answer.  
+1.  ✅Data source access  
+2. Open/close data source connection  
+3. JDBC exception wrapping into DataAccess Exception  
+4. JDBC statement execution 
+
+Correct answer: 1  
+1. A JdbcTemplate requires a DataSource as input parameters
+2. JdbcTemplate uses the provided datasource to open then close a JDBC connection  
+3. Callback methods of the JdbcTemplate throws an SQL Exception that Spring converts into a DataAccessException  
+4. For example, the queryForInt method executes an SQL statement  
+
+--- 
+
+Question 32  
+Using JdbcTemplate, what is the Spring provided class you will use for parsing and merging rows into a single result set object? Select a unique answer.  
+1. RowMapper  
+2. RowCallbackHandler  
+3. ResultSetExtractor  
+4. ResultSetMapper  
+
+Correct answer: 3  
+
+1. RowMapper: result set parsing when needed to map each row into a custom object  
+2. RowCallbackHandler: result set parsing without returning a result to the JdbcTemplate caller  
+3. ResultSetExtractor: for result set parsing and merging rows into a single object  
+4. ResultSetMapper: this class does not exist  
+
+
+
+---
+
+Question 33  
+What configuration is supported by the LocalSessionFactoryBean which supports Hibernate 4 or higher? Select a unique answer.  
+1. Listing entity classes annotated with @Entity  
+2. Scanning a package to detect annotated entity classes (with @Entity)  
+3. Listing hibernate XML mapping configuration file (.hbm.xml)  
+4. All above  
+
+Correct answer: 4  
+
+1. True using the annotatedClasses property. For Hibernate 3.x, this property is available from the AnnotationSessionFactoryBean child class.
+2. True using the packagesToScan property. For Hibernate 3.x, this property is available from the AnnotationSessionFactoryBean child class.  
+3. True using the mappingLocations property.  
+4. True  
+
+----
+
+Transaction  
+
+Question 34  
+What is/are incorrect statements about XML declaration of the transaction manager bean? Select one or more answers.  
+1. The tx namespace provides JTA transaction manager declaration shortcut syntax  
+2.  ✅Id of the bean has to be transactionManager
+3. Depending the application persistence technology, the HibernateTransactionManager or the DataSourceTransactionManager could be used as bean class  
+4. Default transaction timeout could be given  
+
+Correct answer: 2  
+
+1. <tx:jta-transaction-manager />  
+2. Id of the transaction manager bean could be customized (ie. txManager)  
+3. DataSourceTransactionManager is a transaction manager for a JDBC data source. HibernateTransactionManager may be used to manage transaction with Hibernate.  
+4. The AbstractPlatformTransactionManager has a defaultTimeout property that could be customized  
+
+----
+Question 35  
+Assuming @Transactional annotation support is enabled and the transferMoney method is called through a Spring AOP proxy, what is the behavior of the following code sample?
+
+@Transactional(propagation = Propagation.REQUIRED)
+public void transferMoney(Account src, Account target, double amount) {
+    add(src, -amount);
+    add(target, amount);
+}
+
+@Transactional(propagation = Propagation.REQUIRES_NEW)
+public void add(Account account, Double amount) {
+    // IMPLEMENTATION
+}
+
+1. The add() method executes code in a new transaction  
+2. ✅The add() method uses the transaction of the transferMoney() method  
+3. When calling the add() method, an exception is thrown  
+4. Other behavior 
+
+Correct answer: 2  
+
+In proxy mode, only external method calls coming in through the proxy are intercepted. In the code snippet, the add() method is self-invocated. This means that, the @Transactional annotation of the add() method is not interpreted. The REQUIRES_NEW propagation level is not taken into account. To summarize, when the transferMoney() method calls add() method directly, the transaction attributes of add() method are not used.
+-Here’s the plain text version of the content you shared:
+
+---- 
+
+Question 36  
+Does Spring provide programmatic transaction management? Select a unique answer.  
+1. ✅Yes with the TransactionTemplate class  
+2. Yes with the TransactionService class  
+3. Yes using the @Transactional bean post processor  
+4. No  
+
+**Question 36**  
+Correct answer: 1  
+1. The `TransactionTemplate` class provides an `execute(TransactionCallback)` method  
+2. The `TransactionService` class does not exist  
+3. The `@Transactional` annotation is for declarative transaction management  
+
+---
+
+
+Question 37  
+What is the transaction behavior of the PROPAGATION_REQUIRES_NEW mode? Select a unique answer.  
+1. If a transaction exists, the current method should run within this transaction. Otherwise, it should start a new transaction and run within its own transaction.  
+2. If a transaction is in progress, the current method should run with the nested transaction of the existing transaction.
+Otherwise, a new transaction has to be started and run within its own transaction.  
+3. ✅The current method must start a new transaction and run within its own transaction. If there is an existing transaction in progress, it is suspended.  
+4. None of the above  
+
+Question 38  
+What is the default rollback policy in transaction management?  
+1. Rollback for any Exception  
+2. ✅Rollback for RuntimeException  
+3. Rollback for checked exceptions  
+4. Always commit  
+
+Sping @MVC  
+
+Question 39  
+What could not return a Spring MVC controller? Select a single answer.  
+1. ✅An absolute path to the view  
+2. A logical view name  
+3. A new JstlView  
+4. void  
+5. null value  
+
+Correct answer: 1  
+1. Spring does not allow to return an absolute path to the view  
+2. Controller could return a String that matches with a logical view name  
+3. A JstlView with the .jsp path (i.e. /WEB-INF/accountList.jsp)  
+4. void forward to the default view  
+5. null forward to the default view  
+-----
+
+Question 40  
+Where do you cannot declare Spring MVC controller? Select one or more answers.  
+1. In a Spring application context XML configuration file
+2. Into the web.xml file of the web application
+3. Into the java code by using annotation
+4. Into the JSP pages
+Correct answers: 2, 4  
+1. Spring MVC controllers are beans. So you can declare them into a Spring application context XML configuration file that could be loaded by the DispatcherServlet.  
+2. In the web.xml, you may declare a ContextLoaderListener and a DispatcherServlet that are in charge to load XML Spring configuration files.
+ But you cannot declare controllers directly in those files.  
+
+
+
+----
+Question 41  
+What is the easiest method to write a unit test?
+1. 
+void displayAccount(HttpServletRequest req, HttpServletResponse resp)
+    throws ServletException, IOException
+
+2. 
+void displayAccount(HttpServletRequest req, HttpSession Session)
+    throws ServletException, IOException
+
+3. 
+@RequestMapping("/displayAccount")
+String displayAccount(@RequestParam("accountId") int id, Model model)
+
+4. 
+@RequestMapping("/displayAccount")
+String displayAccount(@PathVariable("accountId") int id, Model model)
+
+Correct answer: 3  
+1. `HttpServletRequest` and `HttpServletResponse` have to be mocked. Id of the account to display could be set into the http request parameters.  
+2. `HttpServletRequest` and `HttpSession` have to be mocked. Id of the account to display could be set into the http request parameters.  
+3. ✅This method is not dependent on the servlet API. Id of the account to display may be directly passed through the call stack. Thus test methods are simplified.  
+4. The `@PathVariable` annotation has to be bound to a URI template variable. This is not the case.  
+
+---
+
+Spring Security  
+
+Question 42  
+How could you secure MVC controller with Spring Security? Select a unique answer.  
+1. With the @Secured annotation  
+2. With the @RolesAllowed annotation  
+3. In a XML security configuration file  
+4. ✅All of the above  
+5. None of the above  
+
+Correct answer: 4  
+
+1. `@Secured` annotation is a Spring Security annotation  
+2. `@RolesAllowed` is a JSR‑250 annotation that is supported by Spring Security  
+3. Spring Security could be configured in an XML way to intercept particular URLs  
+
+
+--
+
+Question 43  
+What are the possible mechanisms provided by Spring Security to store user details? Select one or more correct answers.  
+1.  ✅Database  
+2.  ✅JAAS  
+3.  ✅LDAP  
+4.  ✅Properties
+
+----
+Question 44  
+What is right about Spring Security configuration and the security namespace?  
+Select one or more correct answers.  
+1. The access attribute of the intercept-url tag support both EL and constants together.  
+2.  ✅The patterns declared into the intercept-url tag are analyzed from up to bottom. Winning is the first that matches.  
+3. The patterns declared into the intercept-url tag use by default the java regex syntax.  
+4. Security rules may apply depending request parameter 
+<http>
+    <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+    <intercept-url pattern="/**" access="permitAll" />
+</http>
+Requests to /admin/** → must have ADMIN role.
+
+Requests to anything else → permitted.
+
+If you reversed the order, /admin/** would never be protected, because /** would match first. 
+----
+REST  
+
+Question 45  
+Which of the following is true regarding the below Spring controller?
+
+@RestController
+public class OwnerController {
+    @RequestMapping(value = "/owner/{ownerId}", method = RequestMethod.POST)
+    @ResponseBody
+    public Owner findOwner(@PathVariable("ownerId") int ownerId) {
+        return new Owner();
+    }
+}
+
+1. RequestMethod.GET method is more accurate than POST  
+2. @PathVariable should be replaced with the @PathParam annotation  
+3. Returning the 201 HTTP status code is better  
+4. @ResponseBody could be removed  
+
+
+1. ✅ Right: the HTTP GET method is used to read (or retrieve) a representation of a resource. This is the aim of the `findOwner` method. Compared to the POST verb that is most often used to create new resources.  
+2. ❌ Wrong: the `@PathParam` annotation has the same purpose as the `@PathVariable` annotation. But it belongs to JAX‑RS. You cannot use it in Spring MVC, only in frameworks like Apache CXF or Jersey.  
+3. ❌ Wrong: the 201 HTTP status code means "Resource created." It follows a POST command and indicates success.  
+4. ✅ Right: the `@RestController` annotation marks the `OwnerController` class as a controller where every method returns a domain object instead of a view. It’s shorthand for `@Controller` and `@ResponseBody` rolled together. By annotating the controller class with `@RestController`, you no longer need to add `@ResponseBody` to all request‑mapping methods.  
+
+--
+
+Question 46  
+Which of the following statements is true regarding the @ResponseStatus annotation?  
+1.✅ @ResponseStatus is detected on nested exceptions  
+2. The ExceptionHandlerExceptionResolver uses the @ResponseStatus annotation to map exception to HTTP status code  
+3. A controller handler is annotated with the @ResponseStatus, the response status set by RedirectView takes precedence over the annotation value.  
+4. The @ResponseStatus annotation can go on a @RequestMapping method, a @RestController class, or a business exception class.  
+
+Correct answer: 1  
+
+1. ✅ Right: starting from Spring Framework 4.2, the `@ResponseStatus` annotation is detected on nested exceptions.  
+2. ❌ Wrong: this is the job of the `ResponseStatusExceptionResolver` class.  
+Here’s the plain text conversion of your latest section:
+
+---
+
+3. ❌ Wrong: this is the opposite.  
+4. ❌ Wrong: `@ResponseStatus` annotation on a `@RestController` class is not supported  
+Here’s a **cheat sheet of Spring MVC exception handling mechanisms** — concise, exam‑ready, and easy to compare:
+
+---
+
+## 🧩 Exception Handling Cheat Sheet
+
+| Mechanism | Where to Use | Trigger | Typical Usage |
+|-----------|--------------|---------|---------------|
+| **`@ResponseStatus`** | On exception classes or controller methods | Sets a fixed HTTP status when exception is thrown or method returns | Map custom exceptions to HTTP codes (e.g., `404 Not Found`) |
+| **`ResponseStatusException`** | Thrown directly in controller/service | Runtime exception carrying HTTP status + reason | Dynamic error responses (`throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid input")`) |
+| **`@ExceptionHandler`** | Inside a controller class | Handles specific exceptions thrown by methods in that controller | Return custom response bodies or views for errors |
+| **`@ControllerAdvice`** | Global, cross‑cutting | Handles exceptions across all controllers | Centralized error handling, logging, consistent error JSON |
+| **`ExceptionHandlerExceptionResolver`** | Framework resolver | Delegates to `@ExceptionHandler` methods | Internal Spring mechanism to wire exception handlers |
+| **`ResponseStatusExceptionResolver`** | Framework resolver | Detects `@ResponseStatus` annotations | Maps annotated exceptions to HTTP status codes |
+
+---
+
+## 🔎 Quick Examples
+
+### 1. `@ResponseStatus` on Exception
+```java
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class ResourceNotFoundException extends RuntimeException { }
+```
+
+### 2. Throwing `ResponseStatusException`
+```java
+@GetMapping("/item/{id}")
+public Item getItem(@PathVariable String id) {
+    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid ID");
+}
+```
+
+### 3. Local `@ExceptionHandler`
+```java
+@ExceptionHandler(ResourceNotFoundException.class)
+public ResponseEntity<String> handleNotFound(ResourceNotFoundException ex) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item not found");
+}
+```
+
+### 4. Global `@ControllerAdvice`
+```java
+@ControllerAdvice
+public class GlobalExceptionHandler {
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleAll(Exception ex) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
+    }
+}
+```
+
+---
+
+## 🎯 Takeaways
+- **Use `@ResponseStatus`** for static mappings (exception → status).  
+- **Use `ResponseStatusException`** for dynamic, runtime decisions.  
+- **Use `@ExceptionHandler`** for controller‑specific handling.  
+- **Use `@ControllerAdvice`** for global, centralized handling.  
+- **Resolvers (`ExceptionHandlerExceptionResolver`, `ResponseStatusExceptionResolver`)** are Spring’s internal engines that make these annotations work.
+Exception thrown in Controller
+        │
+        ▼
+Check for @ExceptionHandler in same Controller
+        │
+        ├── Found → handled by ExceptionHandlerExceptionResolver
+        │
+        └── Not Found
+              │
+              ▼
+Check for @ControllerAdvice (global handlers)
+        │
+        ├── Found → handled by ExceptionHandlerExceptionResolver
+        │
+        └── Not Found
+              │
+              ▼
+Check if Exception class has @ResponseStatus
+        │
+        ├── Found → handled by ResponseStatusExceptionResolver
+        │
+        └── Not Found
+              │
+              ▼
+Check if exception is ResponseStatusException
+        │
+        ├── Found → status + reason returned
+        │
+        └── Not Found
+              │
+              ▼
+Fallback to DefaultHandlerExceptionResolver
+        │
+        └── Maps common Spring exceptions (e.g. HttpRequestMethodNotSupported → 405)
+
+---
+
+
+Microservice
+Question 47  
+Compared to monolithic application, what are the advantage(s) of microservices?  
+1. The base code is easy to understand  
+2. Imply a simple distributed system  
+3. Easier deployment  
+4. Fine-grained scaling  
+
+Question 48  
+What Spring Cloud provides in a microservices architecture?  
+1. A Service Discovery implementation  
+2. ✅A server for externalized configuration  
+3. A Dockerfile building an image that runs any Spring Boot application  
+4. ✅Netflix OSS integration for Spring Boot  
+
+Spring Boot  
+
+Question 49  
+What provides Spring Boot?  
+1. ✅Support for Jetty and Undertow as embedded containers  
+2. Java code generation  
+3. ✅Auto-configuration of the Spring Framework and third libraries  
+4. ✅Convenient dependency descriptors to load transitive dependencies  
+5. Support both Java-based and YAML for Spring application context configuration  
+
+Question 50  
+What is the name of the default environment configuration file of Spring Boot?  
+1. configuration.spring  
+2. configuration.yml  
+3. configuration.xml  
+4. ✅application.properties
+5. application.json
+----
+
+
+ANSWERS
+=====
+Response  
+Container  
+
+Question 1  
+Answer 2 is correct. Those beans are anonymous because no id is supplied explicitly. Thus Spring container generates a unique id for that bean. It uses the fully qualified class name and appends a number to them. However, if you want to refer to that bean by name, through the use of the ref element you must provide a name (see Naming Beans section of the Spring reference manual). To be correct, the 2nd bean has to declare a jpaDao id attribute in order to be referenced by the repository property of the first bean.  
+
+Question 2  
+Answers 1 and 4 are correct.  
+1. To set bean’s property with the p:propertyName shortcut, you have to declare the http://www.springframework.org/schema/p in your xml configuration file. No xsd is required.  
+2. The bean is anonymous. Spring generates a unique id: com.spring.service.BankServiceImpl#0  
+3. To reference another bean with the p namespace, you have to use the p:propertyName-ref syntax.  
+4. Due to the above explanation, NationalBank is not a bean reference, so it is a simple String and thus a scalar value.  
+
+Question 3  
+Correct answer is 3.  
+The @Bean annotation defines a String bean with the id "clientRepository". JpaClientRepository is the implementation class of the bean. The data source is injected and is not declared in this class.  
+
+Question 4  
+The only possible answer is the number 3.
+1. The <util:constant static-field="constant name"/> tag enables to reference a Java constant or enumeration into a spring configuration file  
+2. ConstantPlaceholderConfigurer does not exist. You may think about the PropertyPlaceholderConfigurer, which is a BeanFactory post processor.  
+3. The <context:property-placeholder location="file:/myApp.properties" /> tag activates the replacement of ${...} placeholders, resolved against the specified properties file.  
+4. The c: namespace is for simplifying constructor syntax (since Spring 3.1) and don’t provide such feature.  
+
+Question 5  
+The statements number 5 is right.  
+1. You may auto-wiring properties by constructor, setter or properties in the same bean  
+2. The <constructor-arg> tag helps to instantiated a bean without default or no-args constructor  
+3. The <constructor-arg> tag could take type and index to reduce ambiguity, but not name which requires debug symbols.  
+
+Question 6  
+Answers 1, 3, 4 and 5 are rights.  
+1. The @PostConstruct, @PreDestroy and @Resource annotations are defined in the JSR-250 "Common Annotations"  
+2. They belong to the javax.annotation package. You should add an external jar to use them in Java 5. Java 6 and above integrates them.  
+3. The <context:component-scan> automatically detects stereotyped classes and
+4. The <context:annotation-config> activates the Spring infrastructure for various annotations to be detected in bean classes, including the JSR-250 annotations.  
+5. The CommonAnnotationBeanPostProcessor supports common Java annotations out of the box, in particular the JSR-250 annotations.  
+
+Question 7  
+Correct answer in the number 3.  
+
+1. In a web application, the ContextLoaderListener is in charge to create an WebApplicationContext.
+2. In an integration test based on Spring, the SpringJUnit4ClassRunner creates the application context for you. The @ContextConfiguration annotation allows to specified application context configuration files.  
+3. In a main method, you have to instantiate a class implementing the ApplicationContext interface (examples: ClassPathXmlApplicationContext or FileSystemXmlApplicationContext)  
+
+Question 8  
+Answer number 4 is right.  
+1. When using the ClassPathXmlApplicationContext, the classpath: prefix is default one so you could omit it  
+2. In a Spring location resource, package separator is a slash and not a dot. Thus the com/example/myapp/config.xml syntax has to be used.  
+3. ClassPathXmlApplicationContext starts looking from root of the classpath regardless of whether specify "/"  
+
+
+
+1. With modern mock API like Mockito or EasyMock, interfaces are not mandatory for mocking or stubbing the service. But using interface remains easier when you have to manually mock the service in unit test.  
+2. Auto-injection is possible with class. Spring uses CGLIB.  
+3. Dependency checking is an advantage of dependencies injection.
+4. The Inversion of Control pattern requires an interface to separate 2 classes. This pattern provides code more flexible, unit testable, loosely coupled and maintainable.  
+
+
+1. In the bean lifecycle, method annotated with @PostConstruct is called after the properties set step and the BeanPostProcessors#postProcessBeforeInitialization step.  
+2. Destroy methods of prototype beans are never called.  
+3. In the bean lifecycle, the InitializingBean is called after the @PostConstruct annotation and after the afterPropertiesSet callback method of the method annotated with the init-method declared in the XML configuration file.  
+4. In the bean lifecycle, the method annotated with the @PreDestroy annotation is called before the destroy callback of the DisposableBean interface and before the destroy-method declared in the XML configuration file.  
+
+Question 12  
+Correct answers are 1 and 2.  
+
+1. In order to be taken into account by Spring, the ApplicationConfig class has to be annotated with the @Configuration annotation.  
+2. Default or no-arg constructor is mandatory. Here, the provided constructor with a dataSource parameter is not taken into account.  
+3. The bean name is clientRepository. The name property of the @Bean annotation is specified thus the method name.
+4. Singleton is the scope of the jpaClientRepository bean.  
+
+Question 13  
+Correct answers are 3 and 4  
+
+1. Use <tx:annotation-driven /> to enable @Transactional annotation scanning  
+2. Use <aop:aspectj-autoproxy/> to enable detection of @Aspect bean  
+3. Turns on <context:annotation-config /> or <context:component-scan /> to enable @Autowiring annotation
+4. Turns on <contxet:component-scan> to enable @Component annotation scanning
+
+
+
+
+Question 22  
+The answer number 2 is correct.  
+
+1. A before advice could throw an exception  
+2. An after throwing advice is executed if a method exits by throwing an exception  
+3. An advice that executes before a join point is named a before advice  
+4. Spring supports after throwing advices
+-----
+Question 23  
+Correct answer: 4  
+1. This is an after (finally) advice  
+2. This is an around advice  
+3. This is a before advice  
+4. True  
+
+Question 24  
+Correct answer: 1  
+1. Definition of an advice  
+2. Definition of a joint point  
+3. Represents nothing  
+4. Definition of a point cut  
+
+Question 25  
+Correct answer: 2  
+1. Definition of an advice  
+2. Definition of a pointcut  
+3. Represents nothing  
+
+
+**Question 37**  
+Correct answer: 3  
+1. `PROPAGATION_REQUIRED`  
+2. `PROPAGATION_NESTED`  
+3. `PROPAGATION_REQUIRES_NEW`  
+
+---
+
+**Question 38**  
+Correct answer: 2  
+
+---
+Here’s the plain text conversion of the latest section you uploaded:
+
+---
+
+1. False.  
+2. True.  
+3. False.  
+4. False.  
+
+**Spring @MVC**
+
+
+---
+Here’s the plain text conversion of the latest section you uploaded:
+
+---
+
+3. The `@Controller` annotation may be used to annotate Spring MVC Controller beans that handle HTTP requests.  
+4. JSP is the View of the MVC Pattern. Thus this is not the right place to declare any controller.  
+
+
+**Spring Security**  
+
+
+**Question 43**  
+✅ Correct answer: **1, 2, 3, and 4**  
+
+---
+
+**Question 44**  
+✅ Correct answer: **2**  
+1. You cannot mix EL and constant in the same configuration file  
+2. If more than one `intercept-url` matches, the top one is used  
+3. Ant pattern is used by default. But you can change to use regular expression.  
+4. Security rules may apply to requestURL, requestmethod (GET, POST …) but not to requestparameters  
+
+---
+Here’s the plain text conversion of your latest section:
+
+---
+
+
+---
+
+**Question 46**  
+Correct answer: 1  
+
+1. ✅ Right: starting from Spring Framework 4.2, the `@ResponseStatus` annotation is detected on nested exceptions.  
+2. ❌ Wrong: this is the job of the `ResponseStatusExceptionResolver` class.  
+Here’s the plain text conversion of your latest section:
+
+---
+
+3. ❌ Wrong: this is the opposite.  
+4. ❌ Wrong: `@ResponseStatus` annotation on a `@RestController` class is not supported  
+
+**Microservices**
+
+**Question 47**  
+Correct answers: 1, 3, 4  
+
+1. ✅ Pro: a microservice is responsible only for one thing. It requires less code than a monolith application and has less risk of changes. A new developer becomes productive quickly.  
+2. ❌ Con: distributed systems are harder to program. Developers have to consider a whole host of concerns that they didn’t with monoliths: backwards compatibility, fault tolerance, latency, asynchronicity, several message formats...  
+3. ✅ Pro: simple services are easier to deploy, and since they are autonomous, are less likely to cause system failures when they go wrong. Starts the web container more quickly, so the deployment is also faster.  
+4. ✅ Pro: if one microservice gets a lot of load you can scale just it, rather than the entire application.  
+
+---
+
+**Question 48**  
+Correct answers: 2, 4  
+
+1. ❌ Wrong: Spring Cloud supports Service Discovery solutions like Eureka and Consul. But it does not implement the Service Discovery pattern.  
+
+Here’s the plain text conversion of your latest section:
+
+---
+
+**2.** ✅ Right: the Spring Cloud Config project provides both a server and a client‑side support for externalized configuration in a distributed system.  
+**3.** ❌ Wrong: Spring Cloud does not support Docker out of the box.  
+**4.** ✅ Right: Spring Cloud supports Netflix implementation of common microservices patterns: Service Discovery (Eureka), Circuit Breaker (Hystrix), Intelligent Routing (Zuul), and Client‑Side Load Balancing (Ribbon).  
+
+---
+
+**Spring Boot**
+
+**Question 49**  
+Correct answers: 1, 3, 4  
+
+1. ✅ Right: using Undertow instead of Tomcat is very similar to using Jetty instead of Tomcat.  
+2. ❌ Wrong: unlike Spring Roo, one of the main goals of Spring Boot is to avoid code generation.  
+3. ✅ Right: The auto‑configuration part of Spring Boot can be achieved thanks to conditional annotations. These annotations activate different configurations depending on the classes, beans, properties, or resources detected in the classpath.
+4. ✅ Right: this is Starter POMs  
+5. ❌ Wrong: Java‑based and XML are supported. Spring Boot favors Java‑based configuration. Although it is possible to call `SpringApplication.run()` with an XML source and use the `@ImportResource` annotation to import Spring XML configuration files. Instead of properties, YAML is supported to externalize environment variables.  
+
+---
+
+**Question 50**  
+Correct answer: 4  
+
+By default, `SpringApplication` will load properties from `application.properties` files. To support YAML, the SnakeYAML library has to be added to the classpath.  
