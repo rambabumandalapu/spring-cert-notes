@@ -157,4 +157,25 @@ Delegates to doClose() for the actual closing procedure.
 
 
 
+`https://copilot.microsoft.com/th/id/BCO.db5e4416-27ed-4782-b5b8-84ba209c05bf.png`
+
+---
+
+### 🔄 Quick Walkthrough
+1. **Instantiation** → Bean is created (constructor).  
+2. **Populate Properties** → Dependencies injected (setter/constructor).  
+3. **Aware Interfaces** → Bean learns its name/context (`BeanNameAware`, `ApplicationContextAware`).  
+4. **BeanPostProcessor (before init)** → Pre-initialization tweaks.  
+5. **Initialization** → Runs `@PostConstruct`, `afterPropertiesSet()`, or custom init method.  
+6. **BeanPostProcessor (after init)** → Post-initialization tweaks.  
+7. **Destruction** → Runs `@PreDestroy`, `DisposableBean.destroy()`, or custom destroy method.  
+
+---
+
+👉 This cheat sheet is perfect for quick revision before your exam — it shows the **hooks and extension points** where you can plug in custom logic.  
+
+Would you like me to also prepare a **condensed one-page text summary** (like a printable revision sheet) that pairs with this diagram?
+
+
+
 
